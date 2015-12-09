@@ -12,6 +12,12 @@ Group: System Environment/Libraries
 BuildRoot: /var/tmp/%{name}-buildroot
 Prefix: %{_prefix}
 
+BuildRequires: SDL2-devel
+BuildRequires: libogg-devel
+BuildRequires: libvorbis-devel
+BuildRequires: autoconf
+BuildRequires: automake
+
 %description
 Due to popular demand, here is a simple multi-channel audio mixer.
 It supports 4 channels of 16 bit stereo audio, plus a single channel
@@ -33,6 +39,7 @@ Tremor, SMPEG MP3, and libmad MP3 libraries.
 %setup 
 
 %build
+./autogen.sh
 CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{prefix}
 make
 
